@@ -1,0 +1,15 @@
+
+            /*
+            do pointValue (V=5, X=10, M=20, etc) context = number
+                if value higher than pointValue[i].value
+                    divide number by pointvalue[i]
+                    if > 1
+                        add pointValue[i].key for each whole number to string
+                        deduct result from context
+                        recurse new context through algorithm
+                        concact result to string.
+                    break loop
+                else if value "one" below pointValue[i].Value
+                    concat PointValue[i+1] + pointValue[i].Value
+            Loop    
+            */
