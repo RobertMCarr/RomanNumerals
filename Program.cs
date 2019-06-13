@@ -97,14 +97,14 @@ namespace RomanNumberals
 
         private static void CalculateAndPrintOutput(Settings settings, List<KeyValuePair<char, int>> romanNumberals, int number)
         {
-            var result = arabicToRomanNumberals(settings, romanNumberals, number);
+            var result = ArabicToRomanNumberals(settings, romanNumberals, number);
             var rightHandSide = (settings.OutputArabicAsWell)? settings.Seperater  + number : string.Empty;
             Console.WriteLine(result + rightHandSide);
         }
 
-        private static string arabicToRomanNumberals(Settings settings, IList<KeyValuePair<char, int>> romanNumberals, int arabic)
+        private static string ArabicToRomanNumberals(Settings settings, IList<KeyValuePair<char, int>> romanNumberals, int arabic)
         {
-            if(arabic == 0) return "";
+            if(arabic == 0) return string.Empty;
 
             int runningValue = arabic;
             string romanNumeralStr = string.Empty;
@@ -117,7 +117,7 @@ namespace RomanNumberals
                 {
                     romanNumeralStr += new string(item.Key, (int)result);
                     runningValue -= (int)result * item.Value;
-                    romanNumeralStr += arabicToRomanNumberals(settings, romanNumberals, runningValue);
+                    romanNumeralStr += ArabicToRomanNumberals(settings, romanNumberals, runningValue);
                     break;
                 }
                 else 
@@ -132,7 +132,7 @@ namespace RomanNumberals
                         {
                             romanNumeralStr += deductableAsString + item.Key;
                             runningValue -= deductable;
-                            romanNumeralStr += arabicToRomanNumberals(settings, romanNumberals, runningValue);
+                            romanNumeralStr += ArabicToRomanNumberals(settings, romanNumberals, runningValue);
                         }
                     }
 
